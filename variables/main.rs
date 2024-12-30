@@ -14,7 +14,7 @@ y =20;
 println!("value after adding mut: {y}");
 
 
-// Constants require type annotation and are computed at compile time
+
 const MAX_POINTS: u32 = 100_000;
 const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 println!("Constants - Max Points: {MAX_POINTS}, Three Hours: {THREE_HOURS_IN_SECONDS}");
@@ -29,12 +29,12 @@ println!("shadowed: {z}");
 let z = z * 3;
 println!("shadowed again: {z}");
 
-// shadowing  with scope
+
 let a = 5;
 println!("outside the value: {a}");
 
 {
-    let a = a * 2;  // shadowing within the scope
+    let a = a * 2;  
     println!("Inner a is: {a}");
 
     let a = a + 1;
@@ -45,8 +45,8 @@ println!("outside the value: {a}");
 println!("outer value of a : {a}");
 
 
-// shadowing with type change
-let spaces = "    ";  // spaces is a string
+
+let spaces = "    ";  
     println!("Spaces as string: '{spaces}'");
     
     let spaces = spaces.len();  

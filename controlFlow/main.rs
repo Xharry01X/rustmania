@@ -15,6 +15,10 @@ fn main() {
     // vector operations
     println!("Working with vectors");
     work_with_vectors();
+
+    // error handling 
+    println!("closures");
+    closures()    
    
 }
 
@@ -78,20 +82,27 @@ fn work_with_vectors() {
     let mut numbers = vec![1, 2, 3, 4, 5];
 
     numbers.push(6);
-    println!("number is added: {:?}", numbers);
-
-    let popped = numbers.pop();
-    println!("popped value: {:?}", popped);
-    println!("number aftef pop: {:?}", numbers);
-
-    // accessing elements
-    println!("First element: {}", numbers[0]);
-    println!("Length: {}", numbers.len());
-
-    // using 
-    match numbers.get(3) {
-        Some(value) => println!("Second elemnt: {}", value),
-        None => println!("No element found"),
+    if let Some(last) = numbers.pop() {
+        println!("Popped: {}", last);
     }
+    
+}
+
+fn closures(){
+    let numbers = vec![1,2,3,4,5];
+
+    let sum: i32 = numbers.iter().fold(0, |acc, &x| acc + x); // same as reduce in js
+    println!("Sum using closures: {}", sum);
+
+    // closure with capture
+    let multiplier = 2;
+    let multiply = |x| x * multiplier;
+
+    let multiplied: Vec<i32> = numbers.iter()
+    .map(|&x| multiply(x))           // Apply multiply closure to each element
+    .collect();                      // Collect results into new vector
+// Result will be [2, 4, 6, 8, 10]
+println!("Numbers multiplied by {}: {:?}", multiplier, multiplied);
+
 }
 
